@@ -73,14 +73,14 @@ const NewsList: React.FC = () => {
           {newsData.map((news, index) => (
             <div key={index} className="flex items-center px-4 py-6">
               {/* Картинка с затемнением */}
-              <div className="relative group w-44 h-28 rounded-md overflow-hidden">
+              <div className="relative group w-44 h-28 rounded-md overflow-hidden cursor-pointer">
                 <Image
                   src={news.image}
                   alt={news.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover cursor-pointer"
                 />
                 {/* Затемнение */}
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition duration-300 ease-in-out"></div>
+                <div className="absolute inset-0 cursor-pointer bg-black bg-opacity-0 group-hover:bg-opacity-40 transition duration-300 ease-in-out"></div>
               </div>
 
               {/* Текст */}
@@ -100,12 +100,10 @@ const NewsList: React.FC = () => {
             </div>
           ))}
         </div>
+
         <div className="w-full h-[1px] bg-gray-300"></div>
         <div className="flex items-center justify-center mt-4">
-          
-          <span
-            className="px-4 py-4 text-gray-700 text-sm font-semibold cursor-pointer hover:text-red-500 transition-colors"
-          >
+          <span className="px-4 py-4 text-gray-700 text-sm font-semibold cursor-pointer hover:text-red-500 transition-colors">
             ДАГЫ...
           </span>
         </div>

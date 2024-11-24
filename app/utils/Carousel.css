@@ -1,0 +1,30 @@
+.slick-slide {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-list {
+  height: 500px !important;
+  overflow: hidden;
+}
+
+img,
+video {
+  max-width: unset;
+}
+
+.custom-slider img {
+  max-width: 100%;
+  min-height: 507px;
+}
+
+/* Затемнение фотографии при наведении */
+.custom-slider .slick-slide:hover img,
+.relative:hover img {
+  filter: brightness(0.6); /* Затемняем изображение (меньше 1 — темнее) */
+  transition: filter 0.3s ease; /* Плавный переход для изменения яркости */
+  cursor: pointer;
+}
+
+

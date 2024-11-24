@@ -3,6 +3,7 @@
 import Slider from "react-slick";
 import { FaCalendarAlt } from "react-icons/fa";
 import { IoEyeSharp } from "react-icons/io5";
+import "../../../utils/Carousel.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
@@ -13,7 +14,6 @@ import img4 from "../../../../public/img4.jpeg";
 import imgOne from "../../../../public/imgOne.jpeg";
 import imgTwo from "../../../../public/imgTwo.jpeg";
 import imgThree from "../../../../public/imgThree.jpeg";
-import "../../../utils/animation.css";
 import SlideText from "@/app/utils/SlideText";
 
 function Carousel() {
@@ -67,16 +67,15 @@ function Carousel() {
     },
   ];
 
-  // Настройки для react-slick
   const settings = {
-    dots: true, // Показывать точки навигации
+    dots: true, 
     infinite: true,
     speed: 500,
-    fade: true, // Включаем эффект fade
+    fade: true, 
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true, // Автопрокрутка слайдов
-    autoplaySpeed: 3000, // Интервал прокрутки слайдов
+    autoplay: true,
+    autoplaySpeed: 3000, 
     arrows: false,
   };
 
@@ -105,17 +104,20 @@ function Carousel() {
         <div className="max-w-screen-xl mx-auto mt-6">
           <div className="flex justify-between items-center">
             {/* Статичные изображения слева */}
-            <div className="flex flex-col w-1/4 ">
+            <div className="flex flex-col  min-w-[250px] ">
               {staticImages.slice(0, 2).map((slide, index) => (
-                <div key={index} className="relative overflow-hidden">
+                <div
+                  key={index}
+                  className="relative w-[250px] h-[250px] overflow-hidden "
+                >
                   <Image
                     src={slide.image}
                     alt={slide.title}
-                    width={300} // Уменьшена ширина
-                    height={200} // Фиксированная высота
-                    className="object-cover rounded-lg max-w-full scale-110  "
+                    layout="fill" 
+                    objectFit="cover"
+                    className=""
                   />
-                  <div className="absolute bottom-0 left-0 bg-gradient-to-t  w-full text-white p-2">
+                  <div className="absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent w-full text-white p-2">
                     <h4 className="text-lg font-semibold">{slide.title}</h4>
                     <div className="flex">
                       <FaCalendarAlt />
@@ -130,26 +132,25 @@ function Carousel() {
             </div>
 
             {/* Слайдер в центре (большой) */}
-            <div className="w-1/2 relative">
+            <div className="relative w-[500px] h-[500px] mx-auto custom-slider">
               <Slider {...settings}>
                 {sliderImages.map((slide, index) => (
-                  <div key={index} className="relative">
+                  <div key={index} className="relative w-full h-full">
                     <Image
                       src={slide.image}
                       alt={slide.title}
-                      width={750} // Увеличена ширина
-                      height={500} // Увеличена высота
-                      className="object-cover rounded-lg max-w-full scale-150"
+                      width={500}
+                      height={500}
+                      className="object-cover"
                     />
-                    <div className="absolute bottom-0 left-0 bg-gradient-to-t  w-full text-white p-2">
+                    <div className="absolute bottom-2 left-0 bg-gradient-to-t from-black to-transparent w-full text-white p-2">
                       <h4 className="text-3xl font-semibold">{slide.title}</h4>
                       <div className="flex">
-                      <FaCalendarAlt />
-                      <p className="text-sm ml-1">{slide.date}</p>
-
-                      <IoEyeSharp className="ml-1" />
-                      <p className="text-xs ml-1">{slide.views} просмотров</p>
-                    </div>
+                        <FaCalendarAlt />
+                        <p className="text-sm ml-1">{slide.date}</p>
+                        <IoEyeSharp className="ml-1" />
+                        <p className="text-xs ml-1">{slide.views} просмотров</p>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -157,17 +158,20 @@ function Carousel() {
             </div>
 
             {/* Статичные изображения справа */}
-            <div className="flex flex-col w-1/4 ">
+            <div className="flex flex-col w-1/4 min-w-[250px]">
               {staticImages.slice(2, 4).map((slide, index) => (
-                <div key={index} className="relative overflow-hidden">
+                <div
+                  key={index}
+                  className="relative w-[250px] h-[250px] overflow-hidden "
+                >
                   <Image
                     src={slide.image}
                     alt={slide.title}
-                    width={300} // Уменьшена ширина
-                    height={200} // Фиксированная высота
-                    className="object-cover rounded-lg max-w-full scale-150"
+                    layout="fill" 
+                    objectFit="cover" 
+                    className=""
                   />
-                  <div className="absolute bottom-0 left-0 bg-gradient-to-t  w-full text-white p-2">
+                  <div className="absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent w-full text-white p-2">
                     <h4 className="text-lg font-semibold">{slide.title}</h4>
                     <div className="flex">
                       <FaCalendarAlt />

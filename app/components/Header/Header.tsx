@@ -1,5 +1,7 @@
 import Navbar from "./Navbar";
+import Navigation from '../Header/Navigation/Navigation'
 import Image from "next/image";
+import '../../utils/Header.css'
 import logo from "../../../public/logo.png";
 import ImgResponse from "../../../public/ea78bad35f833f454809efb0be5d6eff11a2e7c8.jpeg";
 
@@ -13,7 +15,7 @@ function Header() {
       <div className="min-h-[420px] px-32 mx-auto max-w-screen-xl">
         <section className="flex justify-between items-start w-full">
           {/* Левое изображение */}
-          <div className="flex justify-start items-start w-auto">
+          <div className="flex justify-start items-start mt-4">
             <Image
               src={logo}
               alt="Logo"
@@ -21,7 +23,7 @@ function Header() {
             />
           </div>
           {/* Правое изображение */}
-          <div className="flex justify-end items-start w-full">
+          <div className="flex justify-end items-start w-full mt-4 ">
             <Image
               src={ImgResponse}
               width={683}
@@ -32,6 +34,7 @@ function Header() {
           </div>
         </section>
       </div>
+      <Navigation />
     </>
   );
 }

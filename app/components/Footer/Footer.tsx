@@ -3,7 +3,7 @@ import { FaFacebookF, FaTelegramPlane, FaYoutube } from "react-icons/fa"; // Д�
 function Footer() {
   return (
     <footer className="bg-[#24252f] text-white py-6">
-      <div className="max-w-screen-xl mx-auto px-6 flex justify-between">
+      <div className="max-w-screen-xl mx-auto px-32 flex justify-between ">
         {/* Левая часть - Контакты */}
         <div className="flex flex-col space-y-3">
           <h3 className="font-bold">Байланыштар</h3>

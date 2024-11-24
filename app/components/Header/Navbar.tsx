@@ -10,7 +10,6 @@ import turkey from "../../../public/turkey.png";
 export default function Navbar() {
   return (
     <nav className="bg-[#24252f] w-full">
-      {/* Центрируем контент */}
       <div className="max-w-screen-xl mx-auto px-32 py-1 flex items-center justify-between">
         {/* Левая часть с иконками */}
         <div className="flex items-center gap-4">
@@ -27,7 +26,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Правая часть с иконкой и языковым переключателем */}
+        {/* Правая часть */}
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <Image src={donate} alt="/" />
