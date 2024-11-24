@@ -14,7 +14,7 @@ import img4 from "../../../../public/img4.jpeg";
 import imgOne from "../../../../public/imgOne.jpeg";
 import imgTwo from "../../../../public/imgTwo.jpeg";
 import imgThree from "../../../../public/imgThree.jpeg";
-import SlideText from "@/app/utils/SlideText";
+// import SlideText from "@/app/utils/SlideText";
 
 function Carousel() {
   // Данные для статичных изображений
@@ -96,7 +96,7 @@ function Carousel() {
 
           {/* Текст с анимацией */}
           <div className="ml-8">
-            <SlideText />
+            {/* <SlideText /> */}
           </div>
         </div>
 
