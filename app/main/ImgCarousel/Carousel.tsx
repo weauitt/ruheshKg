@@ -3,17 +3,17 @@
 import Slider from "react-slick";
 import { FaCalendarAlt } from "react-icons/fa";
 import { IoEyeSharp } from "react-icons/io5";
-import "../../../utils/Carousel.css";
+import "../../utils/Carousel.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
-import img1 from "../../../../public/img1.jpeg";
-import img2 from "../../../../public/img2.jpeg";
-import img3 from "../../../../public/img3.jpeg";
-import img4 from "../../../../public/img4.jpeg";
-import imgOne from "../../../../public/imgOne.jpeg";
-import imgTwo from "../../../../public/imgTwo.jpeg";
-import imgThree from "../../../../public/imgThree.jpeg";
+import img1 from "../../../public/img1.jpeg";
+import img2 from "../../../public/img2.jpeg";
+import img3 from "../../../public/img3.jpeg";
+import img4 from "../../../public/img4.jpeg";
+import imgOne from "../../../public/imgOne.jpeg";
+import imgTwo from "../../../public/imgTwo.jpeg";
+import imgThree from "../../../public/imgThree.jpeg";
 // import SlideText from "@/app/utils/SlideText";
 
 function Carousel() {

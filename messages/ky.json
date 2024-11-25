@@ -1,0 +1,18 @@
+{
+    "Navbar":{
+        "registr": "Катталуу баракчасы",
+        "authentication": "Кирүү",
+        "donate": "Колдоо көрсөтүү"
+    },
+    "Navigation":{
+        "rubriki": "Рубрикалар",
+        "dasmiya": "Дасмия",
+        "Islam": "Ислам дөөлөтү",
+        "books": "Эл-китеп",
+        "nuska": "Нуска",
+        "aboutUs": "Биз жөнүндө",
+        "partners": "Өнөктөштөр",
+        "zharnama": "Жарнама" 
+    }
+
+}

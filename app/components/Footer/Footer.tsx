@@ -1,3 +1,4 @@
+'use client'
 import { FaFacebookF, FaTelegramPlane, FaYoutube } from "react-icons/fa"; // Для иконок социальных сетей
 
 function Footer() {

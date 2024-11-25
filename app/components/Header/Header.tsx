@@ -1,3 +1,4 @@
+'use client'
 import Navbar from "./Navbar";
 import Navigation from '../Header/Navigation/Navigation'
 import Image from "next/image";
@@ -5,7 +6,9 @@ import '../../utils/Header.css'
 import logo from "../../../public/logo.png";
 import ImgResponse from "../../../public/05e24a833267b1f2a40c9270e3593f9794a8086d.jpeg";
 
+
 function Header() {
+
   return (
     <>
       {/* Navbar всегда на всю ширину экрана */}

@@ -8,7 +8,7 @@ const SubRubrikalar = ({ subCategories }: { subCategories: { name: string; route
       {subCategories.map((subCategory, index) => (
         <li key={index} className="p-2 hover:bg-gray-100 cursor-pointer text-sm">
           {/* Используем Link для роутинга */}
-          <Link className="text-black hover:text-red-600" href={subCategory.route}>
+          <Link className="text-black hover:text-red-600" href={subCategory.route} >
             {subCategory.name}
           </Link>
         </li>

@@ -5,32 +5,45 @@ import { FaChevronDown, FaSearch } from "react-icons/fa";  // Иконка ст�
 import SubRubrikalar from './ModalOkno/subRubrikalar'; // Импортируем компонент Dropdown
 import SubNuska from './ModalOkno/subNuska'; // Импортируем компонент Dropdown
 import SubBiz from './ModalOkno/subBiz'; // Импортируем компонент Dropdown
+import { useTranslations } from "next-intl";
 
-const categories = [
-  { 
-    name: "РУБРИКАЛАР", 
-    hasArrow: true, 
-    SubRubrikalar: [
-      { name: "Экономика", route: "/economic" },
-      { name: "Адабият", route: "/literature" },
-      { name: "Саясат", route: "/politics" },
-      { name: "Коом", route: "/society" },
-    ],
-  },
-  { name: "Дасмия", hasArrow: false },
-  { name: "Ислам дөөлөтү", hasArrow: false },
-  { name: "Нуска", hasArrow: true, SubNuska: [
-    { name: "Конкурс", route: "/contest" }
-  ]},
-  { name: "Биз жөнүндө", hasArrow: true, SubBiz: [
-    {name: "Сайт тууралуу", route: "/AboutUs"},
-    {name: "Байланыштар", route: "/Contacts"}
-  ] },
-  { name: "Өнөктөштөр", hasArrow: false },
-  { name: "Жарнама", hasArrow: false }
-];
+
+
+
+
 
 function CategoriesList() {
+  const t = useTranslations("Navigation");
+  
+  const categories = [
+    {
+      name: t("rubriki"),
+      hasArrow: true,
+      SubRubrikalar: [
+        { name: "economic", route: "/economic" },
+        { name: "literature", route: "/literature" },
+        { name: "politics", route: "/politics" },
+        { name: "society", route: "/society" },
+      ],
+    },
+    { name: t("dasmiya"), hasArrow: false },
+    { name: t("Islam"), hasArrow: false },
+    {
+      name: t("nuska"),
+      hasArrow: true,
+      SubNuska: [{ name: "contest", route: "/contest" }],
+    },
+    {
+      name: t("aboutUs"),
+      hasArrow: true,
+      SubBiz: [
+        { name: "aboutSite", route: "/AboutUs" },
+        { name: "contacts", route: "/Contacts" },
+      ],
+    },
+    { name: t("partners"), hasArrow: false },
+    { name: t("zharnama"), hasArrow: false },
+  ];
   const [isSticky, setIsSticky] = useState(false);
   const ref = useRef(null); // Ссылка на контейнер
 

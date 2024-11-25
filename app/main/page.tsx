@@ -1,13 +1,11 @@
 import Carousel from "./ImgCarousel/Carousel";
-import News from './News/News'
+import NewsList from "./News/News";
 
 export default function Main() {
   return (
     <div>
       <Carousel />
-      <News/>
+      <NewsList />
     </div>
   );
 }
-
-

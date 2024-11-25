@@ -1,0 +1,18 @@
+{
+    "Navbar":{
+        "registr": "Регистрация",
+    "authentication": "Войти" ,
+    "donate": "Пожертвовать"   
+    },
+    "Navigation":{
+        "rubriki": "Рубрикалар",
+        "dasmiya": "Дасмия",
+        "Islam": "Ислам",
+        "books": "Эл-книги",
+        "nuska": "Нуска",
+        "aboutUs": "О нас",
+        "partners": "Партнеры",
+        "zharnama": "Жарнама" 
+    }
+    
+}
