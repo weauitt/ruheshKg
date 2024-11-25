@@ -3,7 +3,7 @@ import Navigation from '../Header/Navigation/Navigation'
 import Image from "next/image";
 import '../../utils/Header.css'
 import logo from "../../../public/logo.png";
-import ImgResponse from "../../../public/ea78bad35f833f454809efb0be5d6eff11a2e7c8.jpeg";
+import ImgResponse from "../../../public/05e24a833267b1f2a40c9270e3593f9794a8086d.jpeg";
 
 function Header() {
   return (
