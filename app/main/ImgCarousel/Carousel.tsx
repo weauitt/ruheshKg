@@ -67,16 +67,34 @@ function Carousel() {
     },
   ];
 
-  const settings = {
+  const settings = { 
     dots: true, 
-    infinite: true,
-    speed: 500,
+    infinite: true, 
+    speed: 500, 
     fade: true, 
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
+    slidesToShow: 1, 
+    slidesToScroll: 1, 
+    autoplay: true, 
     autoplaySpeed: 3000, 
-    arrows: false,
+    arrows: false, 
+    draggable: true, 
+    swipe: true, 
+    responsive: [ 
+      { 
+        breakpoint: 768, 
+        settings: { 
+          slidesToShow: 1, 
+          slidesToScroll: 1, 
+        }, 
+      }, 
+      { 
+        breakpoint: 480, 
+        settings: { 
+          slidesToShow: 1, 
+          slidesToScroll: 1, 
+        }, 
+      }, 
+    ], 
   };
 
   return (

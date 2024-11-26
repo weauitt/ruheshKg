@@ -3,7 +3,7 @@ function page() {
   return (
       <div>
       <button className="p-3 bg-black  "><Link href='/'>Домой</Link></button>
-      <h1 className="text-2xl font-bold text-black"></h1>
+      <h1 className="text-2xl font-bold text-black">Өспүрүм</h1>
       
     </div>
   )
