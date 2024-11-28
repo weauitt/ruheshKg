@@ -1,0 +1,282 @@
+/* responsive.css */
+.containerNavbar {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1050px;
+}
+
+.containerHeader {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1050px;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1050px;
+}
+
+.containerNavigation {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1050px;
+}
+
+.containerArrowNews {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1050px;
+}
+
+.containerCarousel {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1050px;
+}
+
+.containerNews {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1050px;
+}
+
+.custom-slider img {
+  max-width: 100%;
+  min-height: 507px;
+}
+
+@media (max-width: 1100px) {
+  /* Тут Хедер */
+  .containerHeader {
+    width: 900px;
+  }
+  .min-h {
+    min-height: 100px;
+  }
+  .banerWidth {
+    width: 600px;
+  }
+  .logoWidth {
+    width: 250px;
+  }
+
+  /* Навигация */
+  .containerNavigation {
+    max-width: 900px;
+  }
+
+  /* Карусель */
+
+  .containerArrowNews {
+    max-width: 900px;
+  }
+  .containerCarousel {
+    width: 900px;
+  }
+  .imgLeft {
+    width: 210px;
+    height: 200px;
+  }
+
+  .imgRight {
+    width: 200px;
+    height: 200px;
+  }
+
+  .imgCenter {
+    width: 460px;
+    height: 400px;
+    overflow: hidden;
+  }
+
+  .custom-slider img {
+    min-height: 400px;
+  }
+
+  .Zatemnenie {
+    bottom: 0.1rem;
+  }
+
+  /* Новости */
+  .containerNews {
+    max-width: 850px;
+  }
+}
+
+@media (max-width: 930px) {
+  .containerHeader {
+    width: 700px;
+  }
+  .min-h {
+    min-height: 100px;
+  }
+  .banerWidth {
+    width: 400px;
+  }
+  .logoWidth {
+    width: 250px;
+  }
+
+  /* Навигация */
+  .containerNavigation {
+    max-width: 600px;
+  }
+
+  .containerArrowNews {
+    max-width: 700px;
+  }
+  /* . */
+
+  .containerCarousel {
+    width: 700px;
+  }
+
+  .imgLeft {
+    width: 160px;
+    height: 160px;
+  }
+
+  .imgRight {
+    width: 160px;
+    height: 160px;
+  }
+
+  .imgCenter {
+    width: 360px;
+    height: 320px;
+    overflow: hidden;
+  }
+
+  .custom-slider img {
+    min-height: 320px;
+  }
+
+  .Zatemnenie {
+    bottom: 0.1rem;
+  }
+
+  /* Новости */
+  .containerNews {
+    max-width: 680px;
+  }
+
+  .containerFooter {
+    flex-direction: column;
+  }
+  .FooterFix {
+    align-items: baseline;
+    margin-top: 2rem;
+  }
+
+  /* .FooterMargin{
+    margin-top: ;
+  } */
+
+  .FooterInput {
+    width: 100%;
+  }
+}
+
+@media (max-width: 775px) {
+  .containerCarousel {
+    margin-top: 0;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  body,
+  html,
+  .bg-gray-200,
+  .containerCarouselMob,
+  .custom-slider {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+  }
+
+  .imgRightColumn {
+    flex-direction: unset;
+    width: clamp(100px, 100vw, 700px);
+  }
+
+  .imgRight {
+    width: clamp(100px, 100vw, 350px) !important;
+    height: 200px !important;
+  }
+
+  .imgRightIMG {
+    width: clamp(100px, 100vw, 350px) !important;
+  }
+
+  .imgCenter {
+    width: clamp(300px, 100vw, 700px);
+    height: 380px;
+    overflow: hidden;
+  }
+
+  .ImgCenterWidth {
+    width: 700px;
+    height: 385px;
+  }
+
+  .CarouselDelete {
+    display: none;
+  }
+
+  .containerCarouselFixTwo {
+    flex-direction: column;
+  }
+
+  .containerCarouselMob {
+    flex-direction: unset;
+    width: auto;
+  }
+
+  .container {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+
+@media (max-width: 450px) {
+  .NewsAdaptive {
+    font-size: 13px;
+    font-weight: bolder;
+  }
+}
+@media (max-width: 411px) {
+  .NewsAdaptiveImg {
+    width: 120px !important;
+  }
+ .NewsAdaptiveContainer{
+  min-width: 120px !important;
+ }
+}
+@media (max-width: 354px) {
+  .NewsAdaptiveImg {
+    width: 120px !important;
+  }
+ .NewsAdaptiveContainer{
+  min-width: 120px !important;
+ }.NewsAdaptiveText{
+    font-size: 10px;
+  }
+ }
+

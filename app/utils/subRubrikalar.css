@@ -1,15 +1,10 @@
-/* Всплывающее окно (Dropdown) */
-.group:hover ul {
-    display: block;
-    animation: fadeIn 0.3s ease-in-out;
+  .subCategory {
+    padding: 8px 0;
+    border-bottom: 1px solid #4b4b4b; /* Стиль черточки */
   }
   
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  .subCategory:last-child {
+    border-bottom: none; /* Убираем черточку у последней подкатегории */
   }
+  
   

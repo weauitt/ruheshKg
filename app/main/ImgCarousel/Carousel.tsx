@@ -15,8 +15,12 @@ import imgOne from "../../../public/imgOne.jpeg";
 import imgTwo from "../../../public/imgTwo.jpeg";
 import imgThree from "../../../public/imgThree.jpeg";
 // import SlideText from "@/app/utils/SlideText";
+import "../../utils/responsive.css";
+import "../../utils/Header.css";
+import React from "react";
 
 function Carousel() {
+  const [isMobile, setIsMobile] = React.useState(false);
   // Данные для статичных изображений
   const staticImages = [
     {
@@ -67,140 +71,171 @@ function Carousel() {
     },
   ];
 
-  const settings = { 
-    dots: true, 
-    infinite: true, 
-    speed: 500, 
-    fade: true, 
-    slidesToShow: 1, 
-    slidesToScroll: 1, 
-    autoplay: true, 
-    autoplaySpeed: 3000, 
-    arrows: false, 
-    draggable: true, 
-    swipe: true, 
-    responsive: [ 
-      { 
-        breakpoint: 768, 
-        settings: { 
-          slidesToShow: 1, 
-          slidesToScroll: 1, 
-        }, 
-      }, 
-      { 
-        breakpoint: 480, 
-        settings: { 
-          slidesToShow: 1, 
-          slidesToScroll: 1, 
-        }, 
-      }, 
-    ], 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: false,
+    draggable: true,
+    swipe: true,
+    responsive: [
+      {
+        breakpoint: 775,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
+
+  React.useEffect(() => {
+    // Отслеживание ширины экрана
+    const handleResize = () => setIsMobile(window.innerWidth <= 775);
+    handleResize(); // Установить состояние при загрузке
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="bg-gray-200 ">
-      <div className="py-6 max-w-screen-xl mx-auto px-32">
+      <div className="py-6 container w">
         {/* Верхняя строка */}
-        <div className="flex items-center">
-          {/* Кнопка */}
-          <div className="flex items-center bg-[#1b1c26] text-white py-[7px] px-3 text-[12px] w-[90px] uppercase font-bold ">
-            Эң соңку
-          </div>
+        {!isMobile ? (
+          <div className="flex items-center containerArrowNews">
+            {/* Кнопка */}
+            <div className="flex items-center bg-[#1b1c26] text-white py-[7px] px-3 text-[12px] w-[90px] uppercase font-bold ">
+              Эң соңку
+            </div>
 
-          {/* Стрелка */}
-          <div className="flex items-center">
-            <div className="w-0 h-0 border-t-[16px] border-t-transparent border-b-[16px] border-b-transparent border-l-[16px] border-l-[#1b1c26]"></div>
-          </div>
+            {/* Стрелка */}
+            <div className="flex items-center">
+              <div className="w-0 h-0 border-t-[16px] border-t-transparent border-b-[16px] border-b-transparent border-l-[16px] border-l-[#1b1c26]"></div>
+            </div>
 
-          {/* Текст с анимацией */}
-          <div className="ml-8">
-            {/* <SlideText /> */}
+            {/* Текст с анимацией */}
+            <div className="ml-7">
+              <h1 className="text-[black]">Надо доделать</h1>
+            </div>
           </div>
-        </div>
+        ) : (
+          ""
+        )}
 
         {/* Контейнер с слайдером и статичными изображениями */}
-        <div className="max-w-screen-xl mx-auto mt-6">
-          <div className="flex justify-between items-center">
+        <div className="max-w-screen-xl mx-auto mt-6 containerCarousel">
+          <div className="flex justify-between items-center overflow-x-hidden">
             {/* Статичные изображения слева */}
-            <div className="flex flex-col  min-w-[250px] ">
-              {staticImages.slice(0, 2).map((slide, index) => (
-                <div
-                  key={index}
-                  className="relative w-[250px] h-[250px] overflow-hidden "
-                >
-                  <Image
-                    src={slide.image}
-                    alt={slide.title}
-                    layout="fill" 
-                    objectFit="cover"
-                    className=""
-                  />
-                  <div className="absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent w-full text-white p-2">
-                    <h4 className="text-lg font-semibold">{slide.title}</h4>
-                    <div className="flex">
-                      <FaCalendarAlt />
-                      <p className="text-sm ml-1">{slide.date}</p>
+            <div className="CarouselDelete">
+              {!isMobile ? (
+                <div className="flex flex-col  ">
+                  {staticImages.slice(0, 2).map((slide, index) => (
+                    <div
+                      key={index}
+                      className="relative w-[250px] h-[250px] overflow-hidden imgLeft "
+                    >
+                      <Image
+                        src={slide.image}
+                        alt={slide.title}
+                        layout="fill"
+                        objectFit="cover"
+                        className=""
+                      />
+                      <div className="absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent w-full text-white p-2">
+                        <h4 className="text-lg font-semibold">{slide.title}</h4>
+                        <div className="flex">
+                          <FaCalendarAlt />
+                          <p className="text-sm ml-1">{slide.date}</p>
 
-                      <IoEyeSharp className="ml-1" />
-                      <p className="text-xs ml-1">{slide.views} просмотров</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Слайдер в центре (большой) */}
-            <div className="relative w-[500px] h-[500px] mx-auto custom-slider">
-              <Slider {...settings}>
-                {sliderImages.map((slide, index) => (
-                  <div key={index} className="relative w-full h-full">
-                    <Image
-                      src={slide.image}
-                      alt={slide.title}
-                      width={500}
-                      height={500}
-                      className="object-cover"
-                    />
-                    <div className="absolute bottom-2 left-0 bg-gradient-to-t from-black to-transparent w-full text-white p-2">
-                      <h4 className="text-3xl font-semibold">{slide.title}</h4>
-                      <div className="flex">
-                        <FaCalendarAlt />
-                        <p className="text-sm ml-1">{slide.date}</p>
-                        <IoEyeSharp className="ml-1" />
-                        <p className="text-xs ml-1">{slide.views} просмотров</p>
+                          <IoEyeSharp className="ml-1" />
+                          <p className="text-xs ml-1">
+                            {slide.views} просмотров
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </Slider>
+                  ))}
+                </div>
+              ) : (
+                ""
+              )}
             </div>
 
-            {/* Статичные изображения справа */}
-            <div className="flex flex-col w-1/4 min-w-[250px]">
-              {staticImages.slice(2, 4).map((slide, index) => (
-                <div
-                  key={index}
-                  className="relative w-[250px] h-[250px] overflow-hidden "
-                >
-                  <Image
-                    src={slide.image}
-                    alt={slide.title}
-                    layout="fill" 
-                    objectFit="cover" 
-                    className=""
-                  />
-                  <div className="absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent w-full text-white p-2">
-                    <h4 className="text-lg font-semibold">{slide.title}</h4>
-                    <div className="flex">
-                      <FaCalendarAlt />
-                      <p className="text-sm ml-1">{slide.date}</p>
-
-                      <IoEyeSharp className="ml-1" />
-                      <p className="text-xs ml-1">{slide.views} просмотров</p>
-                    </div>
-                  </div>
+            <div>
+              <div className="flex justify-between items-center containerCarouselFlexColumn containerCarouselFixTwo">
+                {/* Слайдер в центре (большой) */}
+                <div className="relative w-[500px] h-[500px] mx-auto custom-slider imgCenter ">
+                  <Slider {...settings}>
+                    {sliderImages.map((slide, index) => (
+                      <div key={index} className="relative w-full h-full ">
+                        <Image
+                          src={slide.image}
+                          alt={slide.title}
+                          width={500}
+                          height={500}
+                          className="object-cover ImgCenterWidth"
+                        />
+                        <div className="absolute bottom-2 left-0 bg-gradient-to-t from-black to-transparent w-full text-white p-2 Zatemnenie">
+                          <h4 className="text-3xl font-semibold">
+                            {slide.title}
+                          </h4>
+                          <div className="flex">
+                            <FaCalendarAlt />
+                            <p className="text-sm ml-1">{slide.date}</p>
+                            <IoEyeSharp className="ml-1" />
+                            <p className="text-xs ml-1">
+                              {slide.views} просмотров
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </Slider>
                 </div>
-              ))}
+
+                {/* Статичные изображения справа */}
+
+                <div className="flex flex-col imgRightColumn ">
+                  {staticImages.slice(2, 4).map((slide, index) => (
+                    <div
+                      key={index}
+                      className="relative w-[250px] h-[250px] overflow-hidden imgRight "
+                    >
+                      <Image
+                        src={slide.image}
+                        alt={slide.title}
+                        layout="fill"
+                        objectFit="cover"
+                        className=""
+                      />
+                      <div className="absolute bottom-0 left-0 bg-gradient-to-t from-black to-transparent w-full text-white p-2">
+                        <h4 className="text-lg font-semibold">{slide.title}</h4>
+                        <div className="flex">
+                          <FaCalendarAlt />
+                          <p className="text-sm ml-1">{slide.date}</p>
+
+                          <IoEyeSharp className="ml-1" />
+                          <p className="text-xs ml-1">
+                            {slide.views} просмотров
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

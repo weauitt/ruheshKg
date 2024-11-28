@@ -8,6 +8,7 @@ import NewThree from "../../../public/News3.jpeg";
 import NewFour from "../../../public/News4.jpeg";
 import NewFive from "../../../public/News5.jpeg";
 import NewSix from "../../../public/News6.jpeg";
+import "../../utils/responsive.css";
 
 const newsData = [
   {
@@ -61,9 +62,18 @@ const newsData = [
 ];
 
 const NewsList: React.FC = () => {
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    // Отслеживание ширины экрана
+    const handleResize = () => setIsMobile(window.innerWidth <= 930);
+    handleResize(); // Установить состояние при загрузке
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <div className="bg-gray-200 py-8">
-      <div className="px-6 max-w-screen-lg mx-auto bg-white">
+      <div className="px-6 containerNews bg-white">
         <h2 className="font-bold text-black text-[16px] px-2 py-4 border-b border-gray-300">
           Жаңылар
         </h2>
@@ -73,11 +83,11 @@ const NewsList: React.FC = () => {
           {newsData.map((news, index) => (
             <div key={index} className="flex items-center px-4 py-6">
               {/* Картинка с затемнением */}
-              <div className="relative group w-44 h-28 rounded-md overflow-hidden cursor-pointer">
+              <div className="relative group w-44 h-28 rounded-md overflow-hidden cursor-pointer min-w-[176px] NewsAdaptiveContainer">
                 <Image
                   src={news.image}
                   alt={news.name}
-                  className="w-full h-full object-cover cursor-pointer"
+                  className="w-full h-full object-cover cursor-pointer NewsAdaptiveImg"
                 />
                 {/* Затемнение */}
                 <div className="absolute inset-0 cursor-pointer bg-black bg-opacity-0 group-hover:bg-opacity-40 transition duration-300 ease-in-out"></div>
@@ -85,7 +95,7 @@ const NewsList: React.FC = () => {
 
               {/* Текст */}
               <div className="ml-4 flex-1">
-                <h3 className="text-lg font-semibold text-gray-800 hover:text-red-500 transition-colors cursor-pointer">
+                <h3 className="NewsAdaptiveText text-lg font-semibold text-gray-800 hover:text-red-500 transition-colors cursor-pointer NewsAdaptive">
                   {news.name}
                 </h3>
 
@@ -95,7 +105,13 @@ const NewsList: React.FC = () => {
                   <IoEyeSharp />
                   <span className="ml-1">{news.views}</span> просмотров
                 </p>
-                <p className="text-sm text-gray-600 mt-2">{news.description}</p>
+                {!isMobile ? (
+                  <p className="text-sm text-gray-600 mt-2">
+                    {news.description}
+                  </p>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           ))}

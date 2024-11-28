@@ -14,10 +14,6 @@ video {
   max-width: unset;
 }
 
-.custom-slider img {
-  max-width: 100%;
-  min-height: 507px;
-}
 
 /* Затемнение фотографии при наведении */
 .custom-slider .slick-slide:hover img,

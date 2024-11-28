@@ -3,7 +3,7 @@ import NewsList from "./News/News";
 
 export default function Main() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Carousel />
       <NewsList />
     </div>
