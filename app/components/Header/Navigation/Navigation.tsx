@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect, useRef } from "react";
 import { FaChevronDown, FaSearch } from "react-icons/fa";
 import { useTranslations, useLocale } from "next-intl"; // Импортируем useLocale
