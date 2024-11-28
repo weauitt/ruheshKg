@@ -2,13 +2,13 @@ import React from "react";
 import Image from "next/image";
 import { FaCalendarAlt } from "react-icons/fa";
 import { IoEyeSharp } from "react-icons/io5";
-import NewOne from "../../../public/News1.jpeg";
-import NewTwo from "../../../public/News2.jpeg";
-import NewThree from "../../../public/News3.jpeg";
-import NewFour from "../../../public/News4.jpeg";
-import NewFive from "../../../public/News5.jpeg";
-import NewSix from "../../../public/News6.jpeg";
-import "../../utils/responsive.css";
+import NewOne from "../../../../public/News1.jpeg";
+import NewTwo from "../../../../public/News2.jpeg";
+import NewThree from "../../../../public/News3.jpeg";
+import NewFour from "../../../../public/News4.jpeg";
+import NewFive from "../../../../public/News5.jpeg";
+import NewSix from "../../../../public/News6.jpeg";
+import "../../../utils/responsive.css";
 
 const newsData = [
   {

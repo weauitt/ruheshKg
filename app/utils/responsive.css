@@ -60,6 +60,12 @@
   min-height: 507px;
 }
 
+@media (min-width: 1100px) {
+  .overflow{
+    overflow-x: unset;
+  }
+}
+
 @media (max-width: 1100px) {
   /* Тут Хедер */
   .containerHeader {

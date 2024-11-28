@@ -6,7 +6,7 @@ import SubNuska from "./ModalOkno/subNuska";
 import SubBiz from "./ModalOkno/subBiz";
 import BurgerMenu from "./Burger/BurgerMenu"; // Импортируем компонент бургер-меню
 import Image from "next/image";
-import logo from '../../../../public/logo.png'
+import logo from "../../../../public/logo.png";
 
 function CategoriesList() {
   const t = useTranslations("Navigation");
@@ -71,75 +71,97 @@ function CategoriesList() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const toggleCategory = (categoryName: string) => {
-    // Меняем состояние открытой категории
+  const handleToggleCategory = (categoryName: string) => {
+    // Меняем состояние открытой категории по клику
     setOpenCategory(openCategory === categoryName ? null : categoryName);
+  };
+
+  const handleMouseEnter = (categoryName: string) => {
+    // Открываем подкатегорию при наведении
+    if (!isMobile) {
+      setOpenCategory(categoryName);
+    }
+  };
+
+  const handleMouseLeave = (categoryName: string) => {
+    // Закрываем подкатегорию при уходе мыши
+    if (!isMobile && openCategory === categoryName) {
+      setOpenCategory(null);
+    }
   };
 
   return (
     <nav
-    ref={ref}
-    className={`bg-white text-black p-3 pl-4 pr-4 mx-auto transition-all duration-300`}
-  >
+      ref={ref}
+      className={`bg-white text-black p-3 pl-4 pr-4 mx-auto transition-all duration-300`}
+    >
+      <div className="flex justify-between items-center containerNavigation">
+        {/* Бургер-меню слева */}
+        {isMobile && (
+          <div className="flex justify-start items-center">
+            <BurgerMenu categories={categories} />
+          </div>
+        )}
 
-    <div className="flex justify-between items-center containerNavigation">
-      {/* Бургер-меню слева */}
-      {isMobile && (
-        <div className="flex justify-start items-center">
-          <BurgerMenu categories={categories} />
+        {/* Навигация по категориям */}
+        {!isMobile && (
+          <ul className="flex justify-start space-x-6">
+            {categories.map((category, index) => (
+              <li
+                key={index}
+                className="relative flex items-center cursor-pointer py-2 border border-transparent"
+                onClick={() =>
+                  isMobile &&
+                  category.hasArrow &&
+                  handleToggleCategory(category.name)
+                }
+                onMouseEnter={() => handleMouseEnter(category.name)}
+                onMouseLeave={() => handleMouseLeave(category.name)}
+              >
+                {/* Основная категория */}
+                <span className="font-bold uppercase text-[12px]">
+                  {category.name}
+                </span>
+                {category.hasArrow && (
+                  <FaChevronDown className="ml-2 text-black" />
+                )}
+
+                {/* Подкатегории */}
+                {category.SubRubrikalar && openCategory === category.name && (
+                  <SubRubrikalar
+                    subCategories={category.SubRubrikalar}
+                    className="absolute left-0 top-full bg-white shadow-lg border border-gray-200 z-10"
+                    onClick={() => setOpenCategory(null)}
+                  />
+                )}
+
+                {category.SubNuska && openCategory === category.name && (
+                  <SubNuska
+                    subCategories={category.SubNuska}
+                    className="absolute left-0 top-full bg-white shadow-lg border border-gray-200 z-10"
+                    onClick={() => setOpenCategory(null)}
+                  />
+                )}
+
+                {category.SubBiz && openCategory === category.name && (
+                  <SubBiz
+                    subCategories={category.SubBiz}
+                    className="absolute left-0 top-full bg-white shadow-lg border border-gray-200 z-10"
+                    onClick={() => setOpenCategory(null)}
+                  />
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+        {isMobileTwo ? <Image src={logo} alt="" className="w-[150px]" /> : ""}
+        {/* Поиск справа */}
+        <div className="flex justify-end items-center px-4 py-2 cursor-pointer">
+          <FaSearch className="text-black" />
         </div>
-      )}
-  
-      {/* Навигация по категориям */}
-      {!isMobile && (
-        <ul className="flex justify-start space-x-6">
-          {categories.map((category, index) => (
-            <li
-              key={index}
-              className="relative flex items-center cursor-pointer py-2 rounded-lg border border-transparent"
-              onClick={() => category.hasArrow && toggleCategory(category.name)}
-            >
-              <span className="font-bold uppercase text-[12px]">
-                {category.name}
-              </span>
-              {category.hasArrow && (
-                <FaChevronDown className="ml-2 text-black" />
-              )}
-  
-              {/* Показываем подкатегории, если категория открыта */}
-              {category.SubRubrikalar && openCategory === category.name && (
-                <SubRubrikalar
-                  subCategories={category.SubRubrikalar}
-                  onClick={() => setOpenCategory(openCategory === category.name ? null : category.name)}
-                />
-              )}
-              {category.SubNuska && openCategory === category.name && (
-                <SubNuska
-                  subCategories={category.SubNuska}
-                  onClick={() => setOpenCategory(openCategory === category.name ? null : category.name)}
-                />
-              )}
-              {category.SubBiz && openCategory === category.name && (
-                <SubBiz
-                  subCategories={category.SubBiz}
-                  onClick={() => setOpenCategory(openCategory === category.name ? null : category.name)}
-                />
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
-      {isMobileTwo ? <Image src={logo} alt="" className="w-[150px]"></Image>: ''}
-      {/* Поиск справа */}
-      <div className="flex justify-end items-center px-4 py-2 rounded-lg cursor-pointer">
-        <FaSearch className="text-black" />
       </div>
-    </div>
-  </nav>
-  
+    </nav>
   );
 }
 
 export default CategoriesList;
-
-
