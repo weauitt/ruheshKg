@@ -6,6 +6,9 @@ import SubRubrikalar from "../ModalOkno/subRubrikalar";
 import SubNuska from "../ModalOkno/subNuska";
 import SubBiz from "../ModalOkno/subBiz";
 import { SubCategory } from '../ModalOkno/types';
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { LoginButton } from "@/app/Authentication/LoginButton";
+import { LogoutBurgerButton } from "@/app/Authentication/LogoutBurgerButton";
 
 interface Category {
   name: string;
@@ -21,6 +24,7 @@ interface BurgerMenuProps {
 }
 
 const BurgerMenu: React.FC<BurgerMenuProps> = ({ categories }) => {
+  const { user, error} = useUser();
   const [isOpen, setIsOpen] = useState(false);
   const [openSubCategories, setOpenSubCategories] = useState<{ [key: string]: boolean }>({});
 
@@ -30,6 +34,9 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ categories }) => {
       [categoryName]: !prevState[categoryName],
     }));
   };
+
+  
+  if (error) return <div>{error.message}</div>;
 
   return (
     <>
@@ -58,6 +65,8 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ categories }) => {
           <FaTimes />
         </button>
         <ul className="p-4 space-y-4 text-[#c1c1c1]">
+        {!user ? <LoginButton /> : <LogoutBurgerButton/>  
+                  }
           {categories.map((category, index) => (
             <li key={index} className="relative flex items-center cursor-pointer py-2 rounded-lg border border-transparent  group">
               {category.route ? (

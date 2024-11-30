@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation"; // Импорт useRouter
 import { FaYoutube, FaTelegram, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 import Image from "next/image";
@@ -10,8 +9,13 @@ import russia from "../../../public/russia.png";
 import unitedKingdom from "../../../public/united-kingdom.png";
 import turkey from "../../../public/turkey.png";
 import { useTranslations } from "next-intl";
+import { useUser } from "@auth0/nextjs-auth0/client";
+import { LoginButton } from "@/app/Authentication/LoginButton";
+import { LogoutButton } from "@/app/Authentication/LogoutButton";
 
 export default function Navbar() {
+    const { user, error} = useUser();
+
   const t = useTranslations("Navbar");
   const router = useRouter();
   const [isMobile, setIsMobile] = React.useState(false);
@@ -40,6 +44,8 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  if (error) return <div>{error.message}</div>;
+
   return (
     <nav className="bg-[#24252f] w-full">
       <div className="containerNavbar py-1 flex items-center justify-between">
@@ -51,13 +57,9 @@ export default function Navbar() {
           <FaWhatsapp className="text-white cursor-pointer hover:text-gray-500 transition-colors duration-300" />
           <div className="border-l h-6 border-gray-400 mx-4" />
           {!isMobily ? (
-            <>
-              <Link href="/register" className="text-white text-[14px]">
-                {t("authentication")}
-              </Link>
-              <Link href="/login" className="text-[14px]">
-                {t("registr")}
-              </Link>
+             <> 
+                {!user ? <LoginButton /> : <LogoutButton/>  
+                  }
             </>
           ) : (
             ""

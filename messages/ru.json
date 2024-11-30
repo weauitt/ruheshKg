@@ -1,6 +1,5 @@
 {
     "Navbar":{
-        "registr": "Регистрация",
     "authentication": "Войти" ,
     "donate": "Пожертвовать"   
     },
@@ -24,6 +23,9 @@
         "contest": "Конкурс",
         "aboutSite": "О сайте",
         "contact": "Контакты"
+    },
+    "Path": {
+       "Homepage": "Главная страница",
+       "CurrenPage": "Личные данные"
     }
-    
 }

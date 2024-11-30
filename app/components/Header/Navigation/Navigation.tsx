@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState, useEffect, useRef } from "react";
 import { FaChevronDown, FaSearch } from "react-icons/fa";
 import { useTranslations, useLocale } from "next-intl"; // Импортируем useLocale
@@ -108,14 +108,11 @@ function CategoriesList() {
         {!isMobile && (
           <ul className="flex justify-start space-x-6">
             {categories.map((category, index) => (
-              <li
-                key={index}
-                className="relative flex items-center cursor-pointer py-2 border border-transparent"
-                onClick={() =>
+              <li key={index} className="relative flex items-center cursor-pointer py-2 border border-transparent" 
+                  onClick={() =>
                   isMobile &&
                   category.hasArrow &&
-                  handleToggleCategory(category.name)
-                }
+                  handleToggleCategory(category.name)}
                 onMouseEnter={() => handleMouseEnter(category.name)}
                 onMouseLeave={() => handleMouseLeave(category.name)}
               >
