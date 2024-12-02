@@ -1,7 +1,8 @@
 {
     "Navbar":{
     "authentication": "Войти" ,
-    "donate": "Пожертвовать"   
+    "donate": "Пожертвовать",   
+    "test": "test"
     },
     "Navigation":{
         "rubriki": "Рубрикалар",
