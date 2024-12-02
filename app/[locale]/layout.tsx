@@ -27,7 +27,7 @@ export default async function RootLayout({
       <body className="antialiased">
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <div className="bg-[#e5e7eb] layout">{children}</div>
+          <div className="bg-[#e5e7eb] layoutФ">{children}</div>
           <Footer/>
         </NextIntlClientProvider>
       </body>

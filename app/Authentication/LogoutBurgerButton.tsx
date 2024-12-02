@@ -24,7 +24,7 @@ export const LogoutBurgerButton = () => {
       <FaRegUser />
       <div className="ml-2 flex flex-col items-center rounded-lg shadow-md">
 
-        <a href={`/${locale}/profile`} className="text-[14px] text-white">{user.nickname}</a>
+        <a href={`/${locale}/profile`} className="text-[14px] text-white">{user.name}</a>
       </div>
     </div>
   );
