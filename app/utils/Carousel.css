@@ -15,11 +15,10 @@ video {
 }
 
 
-/* Затемнение фотографии при наведении */
 .custom-slider .slick-slide:hover img,
 .relative:hover img {
-  filter: brightness(0.6); /* Затемняем изображение (меньше 1 — темнее) */
-  transition: filter 0.3s ease; /* Плавный переход для изменения яркости */
+  filter: brightness(0.6);
+  transition: filter 0.3s ease; 
   cursor: pointer;
 }
 

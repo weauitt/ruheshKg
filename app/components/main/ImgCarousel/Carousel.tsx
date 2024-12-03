@@ -16,8 +16,8 @@ import imgTwo from "../../../../public/imgTwo.jpeg";
 import imgThree from "../../../../public/imgThree.jpeg";
 // import SlideText from "@/app/utils/SlideText";
 import "../../../utils/responsive.css";
-import "../../../utils/Header.css";
 import React from "react";
+import TextSlider from "./TextSlider/TextSlider";
 
 function Carousel() {
   const [isMobile, setIsMobile] = React.useState(false);
@@ -101,9 +101,8 @@ function Carousel() {
   };
 
   React.useEffect(() => {
-    // Отслеживание ширины экрана
     const handleResize = () => setIsMobile(window.innerWidth <= 775);
-    handleResize(); // Установить состояние при загрузке
+    handleResize(); 
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
@@ -116,7 +115,7 @@ function Carousel() {
         {!isMobile ? (
           <div className="flex items-center containerArrowNews">
             {/* Кнопка */}
-            <div className="flex items-center bg-[#1b1c26] text-white py-[7px] px-3 text-[12px] w-[90px] uppercase font-bold ">
+            <div className="flex items-center bg-[#1b1c26] text-white py-[7px] px-3 text-[12px] min-w-[90px] uppercase font-bold ">
               Эң соңку
             </div>
 
@@ -126,8 +125,8 @@ function Carousel() {
             </div>
 
             {/* Текст с анимацией */}
-            <div className="ml-7">
-              <h1 className="text-[black]">Надо доделать</h1>
+            <div className="ml-7 text-[black] max-h-[50px]">
+              <TextSlider />
             </div>
           </div>
         ) : (

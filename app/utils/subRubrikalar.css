@@ -1,10 +1,10 @@
   .subCategory {
     padding: 8px 0;
-    border-bottom: 1px solid #4b4b4b; /* Стиль черточки */
+    border-bottom: 1px solid #4b4b4b;
   }
   
   .subCategory:last-child {
-    border-bottom: none; /* Убираем черточку у последней подкатегории */
+    border-bottom: none; 
   }
   
   

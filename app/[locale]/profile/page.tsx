@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 /* eslint-disable @next/next/no-html-link-for-pages */
 "use client";
 import { useUser } from "@auth0/nextjs-auth0/client";
@@ -34,6 +33,47 @@ const Profile = () => {
     fetchRoles();
   }, []);
 
+  // Отправка данных о пользователе на сервер Django
+  const sendUserDataToDjango = async (userData: {
+    email: string | null | undefined;
+    name: string | null | undefined;
+    auth0_id: string | null | undefined;
+    picture: string | null | undefined;
+  }) => {
+    try {
+      const response = await fetch("http://localhost:8000/api/save_user/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save user data to Django");
+      }
+
+      const result = await response.json();
+      console.log("User data saved successfully:", result);
+    } catch (error) {
+      console.error("Error saving user data:", error);
+    }
+    console.log(`asd${JSON.stringify(userData)}`);
+  };
+
+  // Отправляем данные пользователя на Django после их получения
+  useEffect(() => {
+    if (user) {
+      const userData = {
+        email: user.email,
+        name: user.name,
+        auth0_id: user.sub, // Используем уникальный идентификатор из Auth0
+        picture: user.picture, // Если нужно сохранять изображение профиля
+      };
+      sendUserDataToDjango(userData); // Передаем данные в функцию
+    }
+  }, [user]);
+
   if (isLoading || loadingRoles) {
     return <div>Загрузка...</div>; // Показываем индикатор загрузки
   }
@@ -58,7 +98,7 @@ const Profile = () => {
         </span>
       </div>
 
-      <div className="flex flex-col bg-[white] mt-4 rounded-md shadow p-6 max-w-full ">
+      <div className="flex flex-col bg-[white] mt-4 rounded-md shadow p-6 max-w-full">
         <section className="flex items-center">
           <img
             src={user.picture as string | undefined}
@@ -68,7 +108,7 @@ const Profile = () => {
           <div className="ml-4">
             <h1 className="text-black font-bold text-xl py-3">{user.name}</h1>
             <p className="text-gray-600 py-1">Никнейм: {user.name}</p>
-            <p className="text-gray-600 ">Email: {user.email}</p>
+            <p className="text-gray-600">Email: {user.email}</p>
             <p className="text-gray-500 text-sm py-1">
               Последнее обновление:{" "}
               {user.updated_at

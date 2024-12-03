@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Navbar from "./Navbar";
-import "../../utils/Header.css";
 import Navigation from "../Header/Navigation/Navigation";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
