@@ -9,6 +9,8 @@ import NewFour from "../../../../public/News4.jpeg";
 import NewFive from "../../../../public/News5.jpeg";
 import NewSix from "../../../../public/News6.jpeg";
 import "../../../utils/responsive.css";
+import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 
 const newsData = [
   {
@@ -62,7 +64,10 @@ const newsData = [
 ];
 
 const NewsList: React.FC = () => {
+  const router = useRouter();
+  const locale = useLocale();
   const [isMobile, setIsMobile] = React.useState(false);
+
   React.useEffect(() => {
     // Отслеживание ширины экрана
     const handleResize = () => setIsMobile(window.innerWidth <= 930);
@@ -71,6 +76,11 @@ const NewsList: React.FC = () => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  
+  const handleNewsClick = (id: string) => {
+    router.push(`/${locale}/news/${id}`); // Переход по маршруту
+  };
+  
   return (
     <div className="bg-gray-200 py-8">
       <div className="px-6 containerNews bg-white">
@@ -95,7 +105,7 @@ const NewsList: React.FC = () => {
 
               {/* Текст */}
               <div className="ml-4 flex-1">
-                <h3 className="NewsAdaptiveText text-lg font-semibold text-gray-800 hover:text-red-500 transition-colors cursor-pointer NewsAdaptive">
+                <h3 key={index} onClick={() => handleNewsClick(String(index + 1))} className="NewsAdaptiveText text-lg font-semibold text-gray-800 hover:text-red-500 transition-colors cursor-pointer NewsAdaptive">
                   {news.name}
                 </h3>
 

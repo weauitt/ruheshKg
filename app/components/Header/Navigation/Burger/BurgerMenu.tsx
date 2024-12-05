@@ -50,8 +50,6 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({ categories }) => {
         </button>
       )}
 
-     
-
       {/* Боковое меню */}
       <div
         className={`fixed top-0 left-0 w-[20rem] h-full z-10 bg-[#24252f] shadow-lg transform transition-transform duration-300 ease-in-out ${
