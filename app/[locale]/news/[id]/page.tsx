@@ -23,6 +23,8 @@ interface CommentData {
   comment: string;
 }
 
+// Это компонент при клике на новость, открывается новая страница
+
 const NewsPage = () => {
   const [comments, setComments] = useState<CommentData[]>([]);
   const params = useParams();

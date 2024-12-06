@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 
+// Компонент иконок соц сетей
+
 export const SocialNetwork = () => {
   return (
     <section className="flex mt-8 ml-4 pb-4">

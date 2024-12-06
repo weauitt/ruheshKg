@@ -21,7 +21,7 @@ export default async function RootLayout({
   return (
     <html lang={params.locale}>
       <UserProvider>
-        <body className="antialiased">
+        <body className="antialiased font-ubuntu">
           <NextIntlClientProvider messages={messages}>
             {/* Это глобальный контейнер */}
             <Header />

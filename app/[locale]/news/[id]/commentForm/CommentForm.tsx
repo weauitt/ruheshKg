@@ -5,6 +5,8 @@ import captha1 from "../../../../../public/captcha1.jpg";
 import captha2 from "../../../../../public/captcha2.jpg";
 import { TfiReload } from "react-icons/tfi";
 
+// Компонент формы комментария, поля для ввода коммента 
+
 interface CommentFormProps {
   onSubmit: (name: string, comment: string) => void;
 }

@@ -1,4 +1,4 @@
-// CommentDisplay.tsx
+
 import React from "react";
 
 interface CommentData {
@@ -7,8 +7,10 @@ interface CommentData {
 }
 
 interface CommentDisplayProps {
-  comments: CommentData[]; // Теперь передаем все комментарии в этот компонент
+  comments: CommentData[]; 
 }
+
+// Компонент который отображает сам комментарий
 
 const CommentDisplay: React.FC<CommentDisplayProps> = ({ comments }) => {
   return (

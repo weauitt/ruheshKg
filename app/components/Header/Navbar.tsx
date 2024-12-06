@@ -14,7 +14,7 @@ import { LoginButton } from "@/app/Authentication/LoginButton";
 import { LogoutButton } from "@/app/Authentication/LogoutButton";
 
 export default function Navbar() {
-    const { user, error} = useUser();
+  const { user, error } = useUser();
 
   const t = useTranslations("Navbar");
   const router = useRouter();
@@ -51,19 +51,20 @@ export default function Navbar() {
       <div className="containerNavbar py-1 flex items-center justify-between">
         {/* Левая часть с иконками */}
         <div className="flex items-center gap-4">
-          <FaFacebookF className="text-white cursor-pointer hover:text-gray-500 transition-colors duration-300" />
-          <FaYoutube className="text-white cursor-pointer hover:text-gray-500 transition-colors duration-300" />
-          <FaTelegram className="text-white cursor-pointer hover:text-gray-500 transition-colors duration-300" />
-          <FaWhatsapp className="text-white cursor-pointer hover:text-gray-500 transition-colors duration-300" />
+          <a href="https://www.facebook.com/olzhobaishakir">
+            <FaFacebookF className="text-white cursor-pointer hover:text-gray-500 transition-colors duration-300" />
+          </a>
+          <a href="https://www.youtube.com/channel/UC4PMF_BfOyuySZO53_ThhVw">
+            <FaYoutube className="text-white cursor-pointer hover:text-gray-500 transition-colors duration-300" />
+          </a>
+          <a href="https://t.me/ruhesh">
+            <FaTelegram className="text-white cursor-pointer hover:text-gray-500 transition-colors duration-300" />
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=996555100502&text=%D0%A1%D0%B0%D0%BB%D0%B0%D0%BC%D0%B0%D1%82%D1%81%D1%8B%D0%B7%D0%B1%D1%8B">
+            <FaWhatsapp className="text-white cursor-pointer hover:text-gray-500 transition-colors duration-300" />
+          </a>
           <div className="border-l h-6 border-gray-400 mx-4" />
-          {!isMobily ? (
-             <> 
-                {!user ? <LoginButton /> : <LogoutButton/>  
-                  }
-            </>
-          ) : (
-            ""
-          )}
+          {!isMobily ? <>{!user ? <LoginButton /> : <LogoutButton />}</> : ""}
         </div>
 
         {/* Правая часть */}

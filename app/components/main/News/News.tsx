@@ -93,7 +93,7 @@ const NewsList: React.FC = () => {
           {newsData.map((news, index) => (
             <div key={index} className="flex items-center px-4 py-6">
               {/* Картинка с затемнением */}
-              <div className="relative group w-44 h-28 rounded-md overflow-hidden cursor-pointer min-w-[176px] NewsAdaptiveContainer">
+              <div onClick={() => handleNewsClick(String(index + 1))} className="relative group w-44 h-28 rounded-md overflow-hidden cursor-pointer min-w-[176px] NewsAdaptiveContainer">
                 <Image
                   src={news.image}
                   alt={news.name}

@@ -94,7 +94,7 @@ function CategoriesList() {
   return (
     <nav
       ref={ref}
-      className={`bg-white text-black p-3 pl-4 pr-4 mx-auto transition-all duration-300`}
+      className="bg-white text-black p-3 pl-4 pr-4 mx-auto transition-all duration-300 sticky top-0 z-50 "
     >
       <div className="flex justify-between items-center containerNavigation">
         {/* Бургер-меню слева */}
