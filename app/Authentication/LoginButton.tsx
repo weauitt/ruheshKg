@@ -15,7 +15,7 @@ export const LoginButton = () => {
 
   return (
     <div>
-      <div className="flex  items-center">
+      <div className="flex  items-center text-white">
         <a href="/api/auth/login" >{t('authentication')}</a>
       </div>
     </div>

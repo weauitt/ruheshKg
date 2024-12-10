@@ -1,4 +1,4 @@
-'use client'
+"use client";
 /* eslint-disable @next/next/no-html-link-for-pages */
 import React, { useEffect, useRef, useState } from "react";
 import baner from "../../../public/05e24a833267b1f2a40c9270e3593f9794a8086d.jpeg";
@@ -13,6 +13,7 @@ import NewThree from "../../../public/News3.jpeg";
 import CommentDisplay from "../news/[id]/commentForm/CommentDisplay";
 import CommentForm from "../news/[id]/commentForm/CommentForm";
 import { useParams } from "next/navigation";
+import Sidebar from "@/app/utils/Sidebar";
 
 interface CommentData {
   name: string;
@@ -58,85 +59,92 @@ const Baner = () => {
       date: "22.11.2024",
       views: 248,
     },
-  }
+  };
 
-// Загрузка комментариев из localStorage
-useEffect(() => {
-  if (!isInitialized.current && newsId) {
-    const storedComments = localStorage.getItem(`comments_${newsId}`);
-    if (storedComments) {
-      setComments(JSON.parse(storedComments)); // Загружаем только один раз
-    } else {
-      setComments([]); // Если комментариев нет
+  // Загрузка комментариев из localStorage
+  useEffect(() => {
+    if (!isInitialized.current && newsId) {
+      const storedComments = localStorage.getItem(`comments_${newsId}`);
+      if (storedComments) {
+        setComments(JSON.parse(storedComments)); // Загружаем только один раз
+      } else {
+        setComments([]); // Если комментариев нет
+      }
+      isInitialized.current = true; // Устанавливаем флаг
     }
-    isInitialized.current = true; // Устанавливаем флаг
-  }
-}, [newsId]);
+  }, [newsId]);
 
-useEffect(() => {
-  if (newsId) {
-    localStorage.setItem(`comments_${newsId}`, JSON.stringify(comments)); // Сохраняем изменения
-  }
-}, [comments, newsId]);
+  useEffect(() => {
+    if (newsId) {
+      localStorage.setItem(`comments_${newsId}`, JSON.stringify(comments)); // Сохраняем изменения
+    }
+  }, [comments, newsId]);
 
-const handleCommentSubmit = (name: string, comment: string) => {
-  const newComment = { name, comment };
-  const updatedComments = [...comments, newComment];
-  setComments(updatedComments);
-};
+  const handleCommentSubmit = (name: string, comment: string) => {
+    const newComment = { name, comment };
+    const updatedComments = [...comments, newComment];
+    setComments(updatedComments);
+  };
 
   const newsArray = Object.values(newsData).slice(0, 3);
   const t = useTranslations("Path");
   return (
-    <div className="container py-6 ">
-      <div className="text-[13px] text-gray-500 p-3 bg-white rounded-[2px]  inline-flex items-center whitespace-nowrap">
-        <a href="/" className="text-black hover:text-red-600 duration-300">
-          {t("Homepage")}
-        </a>
-        <span className="mx-1">/</span>
-        <span className="text-sm text-gray-800 font-bold">{Baner.name}</span>
-      </div>
-      <section className="bg-white mt-4 text-black max-w-[690px] rounded-[2]">
-        <div className="ml-4 pt-4">
-          <h1 className="text-3xl mb-2">{Baner.name}</h1>
-          <div className="text-sm text-gray-600 mb-4 flex items-center space-x-2">
-            <FaCalendarAlt /> <p>{Baner.date}</p>
-            <IoEyeSharp />
-            <p>{Baner.views}</p>
-          </div>
+    <div className="flex container ">
+      <section className="container py-6">
+        <div className="text-[13px] text-gray-500 p-3 bg-white rounded-[2px]  inline-flex items-center whitespace-nowrap">
+          <a href="/" className="text-black hover:text-red-600 duration-300">
+            {t("Homepage")}
+          </a>
+          <span className="mx-1">/</span>
+          <span className="text-sm text-gray-800 font-bold">{Baner.name}</span>
         </div>
-        <Image src={Baner.image} alt="/" />
-
-        <div className="text-3xl text-[#dd1f1f] font-bold text-center italic mt-6">
-          <p>{Baner.description}</p>
-        </div>
-        
-        <SocialNetwork />
-      </section>
-
-      <section className="bg-[white] mt-4 max-w-[690px] rounded-[2] text-black">
-        <h1 className="text-lg font-bold ml-4 pt-3">Окшош материалдар</h1>
-        <hr className="border-t-2 border-gray-200 mt-3" />
-        <div className="grid grid-cols-3 gap-4">
-          {newsArray.map((news, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center  rounded-lg p-4"
-            >
-              <Image
-                src={news.image}
-                alt={news.name}
-                className="w-full h-32 object-cover rounded-md mb-2"
-              />
-              <h3 className="text-sm font-bold  mb-1 text-[#3d3d3d]">
-                {news.name}
-              </h3>
+        <section className="bg-white mt-4 text-black max-w-[690px] rounded-[2]">
+          <div className="ml-4 pt-4">
+            <h1 className="text-3xl mb-2">{Baner.name}</h1>
+            <div className="text-sm text-gray-600 mb-4 flex items-center space-x-2">
+              <FaCalendarAlt /> <p>{Baner.date}</p>
+              <IoEyeSharp />
+              <p>{Baner.views}</p>
             </div>
-          ))}
-        </div>
+          </div>
+          <Image src={Baner.image} alt="/" />
+
+          <div className="text-3xl text-[#dd1f1f] font-bold text-center italic mt-6">
+            <p>{Baner.description}</p>
+          </div>
+
+          <SocialNetwork />
+        </section>
+
+        <section className="bg-[white] mt-4 max-w-[690px] rounded-[2] text-black">
+          <h1 className="text-lg font-bold ml-4 pt-3">Окшош материалдар</h1>
+          <hr className="border-t-2 border-gray-200 mt-3" />
+          <div className="grid grid-cols-3 gap-4">
+            {newsArray.map((news, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center  rounded-lg p-4"
+              >
+                <Image
+                  src={news.image}
+                  alt={news.name}
+                  className="w-full h-32 object-cover rounded-md mb-2"
+                />
+                <h3 className="text-sm font-bold  mb-1 text-[#3d3d3d]">
+                  {news.name}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </section>
+        <CommentDisplay comments={comments} />
+        <CommentForm onSubmit={handleCommentSubmit} />
       </section>
-      <CommentDisplay comments={comments} />
-      <CommentForm onSubmit={handleCommentSubmit} />
+
+      {/* Сайдбар справа */}
+      <section className="py-20">
+        <Sidebar />
+      </section>
     </div>
   );
 };

@@ -180,11 +180,7 @@ const NewsPage = () => {
                 key={index}
                 className="flex flex-col items-center  rounded-lg p-4"
               >
-                <Image
-                  src={news.image}
-                  alt={news.name}
-                  className="w-full h-32 object-cover rounded-md mb-2"
-                />
+                <Image src={news.image} alt={news.name} className="w-full h-32 object-cover rounded-md mb-2"/>
                 <h3 className="text-sm font-bold  mb-1 text-[#3d3d3d]">
                   {news.name}
                 </h3>
