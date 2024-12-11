@@ -112,7 +112,6 @@ const Baner = () => {
           <div className="text-3xl text-[#dd1f1f] font-bold text-center italic mt-6">
             <p>{Baner.description}</p>
           </div>
-
           <SocialNetwork />
         </section>
 

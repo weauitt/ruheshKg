@@ -42,12 +42,10 @@ function Header() {
               {/* Правое изображение */}
               <div className="flex justify-end items-start w-full mt-4 banerWidth ">
                 <a href={`/${locale}/baner/`}>
-                  <Image
+                  <Image  
                     src={ImgResponse}
-                    width={683}
-                    height={394}
                     alt="Response Image"
-                    className="object-contain"
+                    className="object-contain banerWidth"
                   />
                 </a>
               </div>

@@ -119,27 +119,31 @@ const NewsPage = () => {
   const newsArray = Object.values(newsData).slice(0, 3);
 
   return (
-    <article className="flex container">
-      <section className="container py-6">
+    <article className="flex containerNewsPage">
+      <section className="containerNewsPage py-6">
         <div className="text-[13px] text-gray-500 p-3 bg-white rounded-[2px]  inline-flex items-center whitespace-nowrap">
           <a href="/" className="text-black hover:text-red-600 duration-300">
             {t("Homepage")}
           </a>
           <span className="mx-1">/</span>
-          <span className="text-sm text-gray-800 font-bold">{news.name}</span>
+          <span className="text-sm text-gray-800 font-bold">
+            {news.name.length > 10
+              ? `${news.name.substring(0, 10)}...`
+              : news.name}
+          </span>
         </div>
 
         {/* Новость */}
-        <section className="text-black bg-[white] mt-4 max-w-[690px] rounded-[2]">
-          <div className="ml-4 pt-4">
-            <h1 className="text-3xl mb-2">{news.name}</h1>
+        <section className="text-black bg-[white] mt-4 max-w-[690px] rounded-[2] ">
+          <div className="ml-4 pt-4 ">
+            <h1 className="text-3xl mb-2 ">{news.name}</h1>
             <div className="text-sm text-gray-600 mb-4 flex items-center space-x-2">
               <FaCalendarAlt /> <p>{news.date}</p>
               <IoEyeSharp />
               <p>{news.views}</p>
             </div>
           </div>
-          <div className="mb-4">
+          <div className="mb-4 containerNewsPageImg">
             <Image
               src={news.image}
               alt="Новость"
@@ -180,7 +184,11 @@ const NewsPage = () => {
                 key={index}
                 className="flex flex-col items-center  rounded-lg p-4"
               >
-                <Image src={news.image} alt={news.name} className="w-full h-32 object-cover rounded-md mb-2"/>
+                <Image
+                  src={news.image}
+                  alt={news.name}
+                  className="w-full h-32 object-cover rounded-md mb-2"
+                />
                 <h3 className="text-sm font-bold  mb-1 text-[#3d3d3d]">
                   {news.name}
                 </h3>
@@ -196,7 +204,7 @@ const NewsPage = () => {
 
       {/* Сайдбар справа */}
       <section className="py-20">
-        <Sidebar  />
+        <Sidebar />
       </section>
     </article>
   );
